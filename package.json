@@ -1,6 +1,6 @@
 {
   "name": "valid-npm-package-name",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Is the given string an acceptable npm package name?",
   "main": "index.js",
   "directories": {
