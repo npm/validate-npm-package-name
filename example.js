@@ -1,12 +1,14 @@
 var valid = require("./")
 
-valid("some-package")  // => {valid: true}
-valid("example.com")   // => {valid: true}
-valid("CAPITALS")      // => {valid: true}
-valid("under_score")   // => {valid: true}
-valid("123numeric")    // => {valid: true}
-valid("crazy!")        // => {valid: true}
+validate("some-package")  // => {valid: true}
+validate("example.com")   // => {valid: true}
+validate("CAPITALS")      // => {valid: true}
+validate("under_score")   // => {valid: true}
+validate("123numeric")    // => {valid: true}
+validate("crazy!")        // => {valid: true}
+validate("@npm/thingy")   // => {valid: true}
+validate("@jane/foo.js")  // => {valid: true}
 
-valid("")              // => {valid: false, errors:["name length must be greater than zero"]}
-valid("ca$h")          // => {valid: false, errors:["name can only contain URL-friendly characters"]}
-valid("_flodash")      // => {valid: false, errors:["name cannot start with an underscore"]}
+validate("")              // => {valid: false, errors:["name length must be greater than zero"]}
+validate("ca$h")          // => {valid: false, errors:["name can only contain URL-friendly characters"]}
+validate("_flodash")      // => {valid: false, errors:["name cannot start with an underscore"]}

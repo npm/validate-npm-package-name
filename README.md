@@ -1,33 +1,32 @@
-# valid-npm-package-name 
+# validate-npm-package-name 
 
-Is the given string an acceptable npm package name?
+Give me a string and I&#39;ll tell you if it&#39;s a valid npm package name
 
 ## Installation
 
 Download node at [nodejs.org](http://nodejs.org) and install it, if you haven't already.
 
 ```sh
-npm install valid-npm-package-name --save
+npm install validate-npm-package-name --save
 ```
 
 ## Usage
 
 ```js
-var valid = require("valid-npm-package-name")
+var valid = require("validate-npm-package-name")
 
-// true
-valid("some-package")
-valid("example.com")
-valid("CAPITAL-LETTERS")
-valid("under_score")
-valid("123numeric")
-valid("crazy!")
+validate("some-package")  // => {valid: true}
+validate("example.com")   // => {valid: true}
+validate("CAPITALS")      // => {valid: true}
+validate("under_score")   // => {valid: true}
+validate("123numeric")    // => {valid: true}
+validate("crazy!")        // => {valid: true}
+validate("@npm/thingy")   // => {valid: true}
+validate("@jane/foo.js")  // => {valid: true}
 
-// false
-valid("")
-valid(" leading-space")
-valid("trailing-space ")
-valid("s/l/a/s/h/e/s")
+validate("")              // => {valid: false, errors:["name length must be greater than zero"]}
+validate("ca$h")          // => {valid: false, errors:["name can only contain URL-friendly characters"]}
+validate("_flodash")      // => {valid: false, errors:["name cannot start with an underscore"]}
 
 ```
 

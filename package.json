@@ -1,7 +1,7 @@
 {
-  "name": "valid-npm-package-name",
-  "version": "1.1.0",
-  "description": "Is the given string an acceptable npm package name?",
+  "name": "validate-npm-package-name",
+  "version": "1.0.0",
+  "description": "Give me a string and I'll tell you if it's a valid npm package name",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zeke/valid-npm-package-name.git"
+    "url": "https://github.com/zeke/validate-npm-package-name"
   },
   "keywords": [
     "npm",
@@ -26,7 +26,7 @@
   "author": "zeke",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/zeke/valid-npm-package-name/issues"
+    "url": "https://github.com/zeke/validate-npm-package-name/issues"
   },
-  "homepage": "https://github.com/zeke/valid-npm-package-name"
+  "homepage": "https://github.com/zeke/validate-npm-package-name"
 }

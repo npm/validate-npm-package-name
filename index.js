@@ -1,4 +1,6 @@
-module.exports = function(name) {
+var scopedPackagePattern = new RegExp("^(?:@([^/]+?)[/])?([^/]+?)$")
+
+var validate = module.exports = function(name) {
 
   var errors = []
 
@@ -38,12 +40,25 @@ module.exports = function(name) {
   }
 
   if (encodeURIComponent(name) !== name) {
+
+    // Maybe it's a scoped package name, like @user/package
+    var nameMatch = name.match(scopedPackagePattern)
+    if (nameMatch) {
+      var user = nameMatch[1]
+      var pkg = nameMatch[2]
+      if (encodeURIComponent(user) === user && encodeURIComponent(pkg) === pkg) {
+        return done(errors)
+      }
+    }
+
     errors.push("name can only contain URL-friendly characters")
   }
 
   return done(errors)
 
 }
+
+validate.scopedPackagePattern = scopedPackagePattern
 
 var done = function (errors) {
   if (errors.length) {
