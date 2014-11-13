@@ -6,13 +6,16 @@ var fs = require("fs")
 test("validate-npm-package-name", function (t) {
   t.deepEqual(valid("some-package"), {valid: true})
   t.deepEqual(valid("example.com"), {valid: true})
-  t.deepEqual(valid("CAPITAL-LETTERS"), {valid: true})
   t.deepEqual(valid("under_score"), {valid: true})
   t.deepEqual(valid("period.js"), {valid: true})
   t.deepEqual(valid("123numeric"), {valid: true})
   t.deepEqual(valid("crazy!"), {valid: true})
   t.deepEqual(valid("@npm/thingy"), {valid: true})
   t.deepEqual(valid("@npm-zors/money!time.js"), {valid: true})
+
+  t.deepEqual(valid(""), {
+    valid: false,
+    errors: ["name length must be greater than zero"]})
 
   t.deepEqual(valid(""), {
     valid: false,
@@ -45,6 +48,17 @@ test("validate-npm-package-name", function (t) {
   t.deepEqual(valid("s/l/a/s/h/e/s"), {
     valid: false,
     errors: ["name can only contain URL-friendly characters"]})
+
+  // Legacy Mixed-Case
+
+  t.deepEqual(valid("CAPITAL-LETTERS", {allowMixedCase: true}), {valid: true})
+
+  t.deepEqual(valid("CAPITAL-LETTERS"), {
+    valid: false,
+    errors: ["name must be lowercase"]})
+
+
+
 
   t.end()
 })

@@ -1,8 +1,14 @@
 var scopedPackagePattern = new RegExp("^(?:@([^/]+?)[/])?([^/]+?)$")
 
-var validate = module.exports = function(name) {
+var validate = module.exports = function(name, options) {
 
   var errors = []
+
+  if (!options) {
+    options = {
+      allowMixedCase: false
+    }
+  }
 
   if (name === null) {
     errors.push("name cannot be null")
@@ -37,6 +43,10 @@ var validate = module.exports = function(name) {
 
   if (name.trim() !== name) {
     errors.push("name cannot contain leading or trailing spaces")
+  }
+
+  if (name.toLowerCase() !== name && !options.allowMixedCase) {
+    errors.push("name must be lowercase")
   }
 
   if (encodeURIComponent(name) !== name) {
