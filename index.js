@@ -1,4 +1,8 @@
-var scopedPackagePattern = new RegExp("^(?:@([^/]+?)[/])?([^/]+?)$")
+var scopedPackagePattern = new RegExp("^(?:@([^/]+?)[/])?([^/]+?)$");
+var blacklist = [
+  "node_modules",
+  "favicon.ico"
+];
 
 var validate = module.exports = function(name, options) {
 
@@ -48,6 +52,12 @@ var validate = module.exports = function(name, options) {
   if (name.toLowerCase() !== name && !options.allowMixedCase) {
     errors.push("name must be lowercase")
   }
+
+  blacklist.forEach(function(blacklistedName){
+    if (name.toLowerCase() === blacklistedName) {
+      errors.push(blacklistedName + " is a blacklisted name")
+    }
+  })
 
   if (encodeURIComponent(name) !== name) {
 

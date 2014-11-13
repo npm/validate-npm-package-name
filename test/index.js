@@ -49,6 +49,14 @@ test("validate-npm-package-name", function (t) {
     valid: false,
     errors: ["name can only contain URL-friendly characters"]})
 
+  t.deepEqual(valid("node_modules"), {
+    valid: false,
+    errors: ["node_modules is a blacklisted name"]})
+
+  t.deepEqual(valid("favicon.ico"), {
+    valid: false,
+    errors: ["favicon.ico is a blacklisted name"]})
+
   // Legacy Mixed-Case
 
   t.deepEqual(valid("CAPITAL-LETTERS", {allowMixedCase: true}), {valid: true})
