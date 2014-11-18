@@ -57,6 +57,10 @@ test("validate-npm-package-name", function (t) {
     valid: false,
     errors: ["favicon.ico is a blacklisted name"]})
 
+  t.deepEqual(valid("http"), {
+    valid: false,
+    errors: ["http is a Node.js core module name"]})
+
   // Legacy Mixed-Case
 
   t.deepEqual(valid("CAPITAL-LETTERS", {allowMixedCase: true}), {valid: true})

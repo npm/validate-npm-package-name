@@ -1,4 +1,5 @@
 var scopedPackagePattern = new RegExp("^(?:@([^/]+?)[/])?([^/]+?)$");
+var nodeCoreModuleNames = require("node-core-module-names")
 var blacklist = [
   "node_modules",
   "favicon.ico"
@@ -53,9 +54,18 @@ var validate = module.exports = function(name, options) {
     errors.push("name must be lowercase")
   }
 
+  // No funny business
   blacklist.forEach(function(blacklistedName){
     if (name.toLowerCase() === blacklistedName) {
       errors.push(blacklistedName + " is a blacklisted name")
+    }
+  })
+
+  // Disallow core module names
+  // http, events, util, domain, cluster, etc
+  nodeCoreModuleNames.forEach(function(nodeCoreModule){
+    if (name.toLowerCase() === nodeCoreModule) {
+      errors.push(nodeCoreModule + " is a Node.js core module name")
     }
   })
 
