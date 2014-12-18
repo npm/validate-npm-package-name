@@ -1,5 +1,5 @@
 var scopedPackagePattern = new RegExp("^(?:@([^/]+?)[/])?([^/]+?)$");
-var nodeCoreModuleNames = require("node-core-module-names")
+var builtins = require("builtins")
 var blacklist = [
   "node_modules",
   "favicon.ico"
@@ -63,9 +63,9 @@ var validate = module.exports = function(name, options) {
 
   // Disallow core module names
   // http, events, util, domain, cluster, etc
-  nodeCoreModuleNames.forEach(function(nodeCoreModule){
-    if (name.toLowerCase() === nodeCoreModule) {
-      errors.push(nodeCoreModule + " is a Node.js core module name")
+  builtins.forEach(function(builtin){
+    if (name.toLowerCase() === builtin) {
+      errors.push(builtin + " is a Node.js core module name")
     }
   })
 
