@@ -4,14 +4,22 @@ var path = require("path")
 var fs = require("fs")
 
 test("validate-npm-package-name", function (t) {
+
+  // Traditional
+
   t.deepEqual(valid("some-package"), {valid: true})
   t.deepEqual(valid("example.com"), {valid: true})
   t.deepEqual(valid("under_score"), {valid: true})
   t.deepEqual(valid("period.js"), {valid: true})
   t.deepEqual(valid("123numeric"), {valid: true})
   t.deepEqual(valid("crazy!"), {valid: true})
+
+  // Scoped (npm 2+)
+
   t.deepEqual(valid("@npm/thingy"), {valid: true})
   t.deepEqual(valid("@npm-zors/money!time.js"), {valid: true})
+
+  // Invalid
 
   t.deepEqual(valid(""), {
     valid: false,
@@ -57,9 +65,11 @@ test("validate-npm-package-name", function (t) {
     valid: false,
     errors: ["favicon.ico is a blacklisted name"]})
 
+  // Sketchy
+
   t.deepEqual(valid("http"), {
-    valid: false,
-    errors: ["http is a Node.js core module name"]})
+    valid: true,
+    warnings: ["http is a node core module name"]})
 
   // Legacy Mixed-Case
 
@@ -68,9 +78,6 @@ test("validate-npm-package-name", function (t) {
   t.deepEqual(valid("CAPITAL-LETTERS"), {
     valid: false,
     errors: ["name must be lowercase"]})
-
-
-
 
   t.end()
 })
