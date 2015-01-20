@@ -1,6 +1,6 @@
 {
   "name": "validate-npm-package-name",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "Give me a string and I'll tell you if it's a valid npm package name",
   "main": "index.js",
   "directories": {
