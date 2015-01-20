@@ -5,7 +5,7 @@ Give me a string and I'll tell you if it's a valid npm package name.
 This package exports a single synchronous function that takes a string as
 input and returns an object:
 
-### Valid Names
+## Valid Names
 
 ```js
 var validate = require("validate-npm-package-name")
@@ -28,7 +28,7 @@ All of the above names are valid, so you'll get this object back:
 }
 ```
 
-### Invalid Names
+## Invalid Names
 
 ```js
   validate(" leading-space:and:weirdchars")
@@ -47,7 +47,7 @@ That was never a valid package name, so you get this:
 }
 ```
 
-### Legacy Names
+## Legacy Names
 
 In the old days of npm, package names were wild. They could have capital
 letters in them. They could be really long. They could be the name of an
