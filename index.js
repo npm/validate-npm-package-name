@@ -5,16 +5,10 @@ var blacklist = [
   "favicon.ico"
 ];
 
-var validate = module.exports = function(name, options) {
+var validate = module.exports = function(name) {
 
   var warnings = []
   var errors = []
-
-  if (!options) {
-    options = {
-      allowMixedCase: false
-    }
-  }
 
   if (name === null) {
     errors.push("name cannot be null")
@@ -43,16 +37,8 @@ var validate = module.exports = function(name, options) {
     errors.push("name cannot start with an underscore")
   }
 
-  if (name.length > 50) {
-    errors.push("name cannot be longer than 50 characters")
-  }
-
   if (name.trim() !== name) {
     errors.push("name cannot contain leading or trailing spaces")
-  }
-
-  if (name.toLowerCase() !== name && !options.allowMixedCase) {
-    errors.push("name must be lowercase")
   }
 
   // No funny business
@@ -62,13 +48,24 @@ var validate = module.exports = function(name, options) {
     }
   })
 
-  // Warn on core module names
-  // http, events, util, domain, cluster, etc
+  // Generate warnings for stuff that used to be allowed
+
+  // core module names like http, events, util, etc
   builtins.forEach(function(builtin){
     if (name.toLowerCase() === builtin) {
-      warnings.push(builtin + " is a node core module name")
+      warnings.push(builtin + " is a core module name")
     }
   })
+
+  // really-long-package-names-------------------------------such--length-----many---wow
+  if (name.length > 50) {
+    warnings.push("name can no longer contain more than 50 characters")
+  }
+
+  // mIxeD CaSe nAMEs
+  if (name.toLowerCase() !== name) {
+    warnings.push("name can no longer contain capital letters")
+  }
 
   if (encodeURIComponent(name) !== name) {
 
@@ -93,7 +90,8 @@ validate.scopedPackagePattern = scopedPackagePattern
 
 var done = function (warnings, errors) {
   var result = {
-    valid: errors.length === 0,
+    validForNewPackages: errors.length === 0 && warnings.length === 0,
+    validForOldPackages: errors.length === 0,
     warnings: warnings,
     errors: errors
   }
