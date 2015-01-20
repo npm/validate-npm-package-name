@@ -13,15 +13,27 @@ npm install validate-npm-package-name --save
 ## Usage
 
 ```js
-var valid = require("validate-npm-package-name")
+var validate = require("validate-npm-package-name")
+
+// regular
 
 validate("some-package")  // => {valid: true}
 validate("example.com")   // => {valid: true}
 validate("under_score")   // => {valid: true}
 validate("123numeric")    // => {valid: true}
 validate("crazy!")        // => {valid: true}
+
+// scoped
+
 validate("@npm/thingy")   // => {valid: true}
 validate("@jane/foo.js")  // => {valid: true}
+
+// valid, but reserved by node core
+
+validate("http")          // => {valid: true, warnings:["http is a node core module name"]}
+validate("url")           // => {valid: true, warnings:["url is a node core module name"]}
+
+// invalid
 
 validate("")              // => {valid: false, errors:["name length must be greater than zero"]}
 validate("ca$h")          // => {valid: false, errors:["name can only contain URL-friendly characters"]}
@@ -45,7 +57,7 @@ npm test
 
 ## Dependencies
 
-None
+- [builtins](https://github.com/juliangruber/builtins): List of node.js builtin modules
 
 ## Dev Dependencies
 

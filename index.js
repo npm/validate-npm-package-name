@@ -1,4 +1,5 @@
 var scopedPackagePattern = new RegExp("^(?:@([^/]+?)[/])?([^/]+?)$");
+var builtins = require("builtins")
 var blacklist = [
   "node_modules",
   "favicon.ico"
@@ -6,6 +7,7 @@ var blacklist = [
 
 var validate = module.exports = function(name, options) {
 
+  var warnings = []
   var errors = []
 
   if (!options) {
@@ -16,17 +18,17 @@ var validate = module.exports = function(name, options) {
 
   if (name === null) {
     errors.push("name cannot be null")
-    return done(errors)
+    return done(warnings, errors)
   }
 
   if (name === undefined) {
     errors.push("name cannot be undefined")
-    return done(errors)
+    return done(warnings, errors)
   }
 
   if (typeof name !== "string") {
     errors.push("name must be a string")
-    return done(errors)
+    return done(warnings, errors)
   }
 
   if (!name.length) {
@@ -53,9 +55,18 @@ var validate = module.exports = function(name, options) {
     errors.push("name must be lowercase")
   }
 
+  // No funny business
   blacklist.forEach(function(blacklistedName){
     if (name.toLowerCase() === blacklistedName) {
       errors.push(blacklistedName + " is a blacklisted name")
+    }
+  })
+
+  // Warn on core module names
+  // http, events, util, domain, cluster, etc
+  builtins.forEach(function(builtin){
+    if (name.toLowerCase() === builtin) {
+      warnings.push(builtin + " is a node core module name")
     }
   })
 
@@ -67,23 +78,26 @@ var validate = module.exports = function(name, options) {
       var user = nameMatch[1]
       var pkg = nameMatch[2]
       if (encodeURIComponent(user) === user && encodeURIComponent(pkg) === pkg) {
-        return done(errors)
+        return done(warnings, errors)
       }
     }
 
     errors.push("name can only contain URL-friendly characters")
   }
 
-  return done(errors)
+  return done(warnings, errors)
 
 }
 
 validate.scopedPackagePattern = scopedPackagePattern
 
-var done = function (errors) {
-  if (errors.length) {
-    return {valid: false, errors: errors}
-  } else {
-    return {valid: true}
+var done = function (warnings, errors) {
+  var result = {
+    valid: errors.length === 0,
+    warnings: warnings,
+    errors: errors
   }
+  if (!result.warnings.length) delete result.warnings
+  if (!result.errors.length) delete result.errors
+  return result
 }
