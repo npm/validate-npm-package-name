@@ -58,8 +58,8 @@ var validate = module.exports = function(name) {
   })
 
   // really-long-package-names-------------------------------such--length-----many---wow
-  if (name.length > 50) {
-    warnings.push("name can no longer contain more than 50 characters")
+  if (name.length > 128) {
+    warnings.push("name can no longer contain more than 128 characters")
   }
 
   // mIxeD CaSe nAMEs
