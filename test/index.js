@@ -80,10 +80,10 @@ test("validate-npm-package-name", function (t) {
 
   // Long Package Names
 
-  t.deepEqual(validate("1234567890123456789012345678901234567890-more-than-fifty"), {
+  t.deepEqual(validate("1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890"), {
     validForNewPackages: false,
     validForOldPackages: true,
-    warnings: ["name can no longer contain more than 50 characters"]
+    warnings: ["name can no longer contain more than 128 characters"]
   })
 
   // Legacy Mixed-Case
