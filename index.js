@@ -24,6 +24,8 @@ var validate = module.exports = function(name) {
     errors.push("name must be a string")
     return done(warnings, errors)
   }
+  
+  var name_lcased = name.toLowerCase()
 
   if (!name.length) {
     errors.push("name length must be greater than zero")
@@ -42,20 +44,16 @@ var validate = module.exports = function(name) {
   }
 
   // No funny business
-  blacklist.forEach(function(blacklistedName){
-    if (name.toLowerCase() === blacklistedName) {
-      errors.push(blacklistedName + " is a blacklisted name")
-    }
-  })
+  if (blacklist.some(function(blacklistedName) { return name_lcased === blacklistedName; })) {
+    errors.push(name + " is a blacklisted name")
+  }
 
   // Generate warnings for stuff that used to be allowed
 
   // core module names like http, events, util, etc
-  builtins.forEach(function(builtin){
-    if (name.toLowerCase() === builtin) {
-      warnings.push(builtin + " is a core module name")
-    }
-  })
+  if (builtins.some(function(builtin) { return name_lcased === builtin; })) {
+    warnings.push(name + " is a core module name")
+  }
 
   // really-long-package-names-------------------------------such--length-----many---wow
   // the thisisareallyreallylongpackagenameitshouldpublishdowenowhavealimittothelengthofpackagenames-poch.
@@ -64,7 +62,7 @@ var validate = module.exports = function(name) {
   }
 
   // mIxeD CaSe nAMEs
-  if (name.toLowerCase() !== name) {
+  if (name_lcased !== name) {
     warnings.push("name can no longer contain capital letters")
   }
 
