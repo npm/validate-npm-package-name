@@ -47,7 +47,7 @@ validate("some-package")
 validate("example.com")
 validate("under_score")
 validate("123numeric")
-validate("crazy!")
+validate("excited!")
 validate("@npm/thingy")
 validate("@jane/foo.js")
 ```
@@ -91,7 +91,7 @@ a change in the value of `validForNewPackages` property, and a warnings array
 will be present:
 
 ```js
-validate("cRaZY-paCkAgE-with-mixed-case-and-more-than-214-characters-----------------------------------------------------------------------------------------------------------------------------------------------------------")
+validate("eLaBorAtE-paCkAgE-with-mixed-case-and-more-than-214-characters-----------------------------------------------------------------------------------------------------------------------------------------------------------")
 ```
 
 returns:
