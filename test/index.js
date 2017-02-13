@@ -12,12 +12,16 @@ test("validate-npm-package-name", function (t) {
   t.deepEqual(validate("under_score"), {validForNewPackages: true, validForOldPackages: true})
   t.deepEqual(validate("period.js"), {validForNewPackages: true, validForOldPackages: true})
   t.deepEqual(validate("123numeric"), {validForNewPackages: true, validForOldPackages: true})
-  t.deepEqual(validate("crazy!"), {validForNewPackages: true, validForOldPackages: true})
+  t.deepEqual(validate("crazy!"), {validForNewPackages: false, validForOldPackages: true, warnings: [
+    'name can no longer contain special characters ("~\'!()*")'
+  ]})
 
   // Scoped (npm 2+)
 
   t.deepEqual(validate("@npm/thingy"), {validForNewPackages: true, validForOldPackages: true})
-  t.deepEqual(validate("@npm-zors/money!time.js"), {validForNewPackages: true, validForOldPackages: true})
+  t.deepEqual(validate("@npm-zors/money!time.js"), {validForNewPackages: false, validForOldPackages: true, warnings: [
+    'name can no longer contain special characters ("~\'!()*")'
+  ]})
 
   // Invalid
 

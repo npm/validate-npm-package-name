@@ -68,6 +68,10 @@ var validate = module.exports = function(name) {
     warnings.push("name can no longer contain capital letters")
   }
 
+  if (/[~'!()*]/.test(name.split('/').slice(-1)[0])) {
+    warnings.push('name can no longer contain special characters ("~\'!()*")')
+  }
+
   if (encodeURIComponent(name) !== name) {
 
     // Maybe it's a scoped package name, like @user/package
