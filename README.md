@@ -48,7 +48,6 @@ validate("some-package")
 validate("example.com")
 validate("under_score")
 validate("123numeric")
-validate("excited!")
 validate("@npm/thingy")
 validate("@jane/foo.js")
 ```
@@ -65,6 +64,7 @@ All of the above names are valid, so you'll get this object back:
 ### Invalid Names
 
 ```js
+validate("excited!")
 validate(" leading-space:and:weirdchars")
 ```
 
