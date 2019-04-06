@@ -1,7 +1,7 @@
 'use strict'
 
 var scopedPackagePattern = new RegExp('^(?:@([^/]+?)[/])?([^/]+?)$')
-var builtins = require('builtins')
+var builtins = require('builtins')()
 var blacklist = [
   'node_modules',
   'favicon.ico'
