@@ -6,6 +6,9 @@ var blacklist = [
   'node_modules',
   'favicon.ico'
 ]
+var blacklistRegex = [
+  /download/
+]
 
 var validate = module.exports = function (name) {
   var warnings = []
@@ -46,6 +49,11 @@ var validate = module.exports = function (name) {
   blacklist.forEach(function (blacklistedName) {
     if (name.toLowerCase() === blacklistedName) {
       errors.push(blacklistedName + ' is a blacklisted name')
+    }
+  })
+  blacklistRegex.forEach(function (blacklistedRegex) {
+    if (blacklistedRegex.test(name.toLowerCase())) {
+      warnings.push('names matching ' + blacklistedRegex + ' are no longer allowed')
     }
   })
 
