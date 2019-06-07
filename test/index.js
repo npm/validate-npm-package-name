@@ -78,6 +78,29 @@ test('validate-npm-package-name', function (t) {
     validForOldPackages: false,
     errors: ['favicon.ico is a blacklisted name']})
 
+  t.deepEqual(validate('download-file-async'), {
+    validForNewPackages: false,
+    validForOldPackages: true,
+    warnings: ['names matching /(^|\\W)download($|\\W)/ are no longer allowed']
+  })
+
+  t.deepEqual(validate('forbid-download-everywhere'), {
+    validForNewPackages: false,
+    validForOldPackages: true,
+    warnings: ['names matching /(^|\\W)download($|\\W)/ are no longer allowed']
+  })
+
+  t.deepEqual(validate('forbid-download'), {
+    validForNewPackages: false,
+    validForOldPackages: true,
+    warnings: ['names matching /(^|\\W)download($|\\W)/ are no longer allowed']
+  })
+
+  t.deepEqual(validate('node-downloader-helper'), {
+    validForNewPackages: true,
+    validForOldPackages: true
+  })
+
   // Node/IO Core
 
   t.deepEqual(validate('http'), {
