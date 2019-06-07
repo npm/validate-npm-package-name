@@ -7,7 +7,7 @@ var blacklist = [
   'favicon.ico'
 ]
 var blacklistRegex = [
-  /download/
+  /(^|\W)download($|\W)/
 ]
 
 var validate = module.exports = function (name) {

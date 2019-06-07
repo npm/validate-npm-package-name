@@ -81,7 +81,24 @@ test('validate-npm-package-name', function (t) {
   t.deepEqual(validate('download-file-async'), {
     validForNewPackages: false,
     validForOldPackages: true,
-    warnings: ['names matching /download/ are no longer allowed']
+    warnings: ['names matching /(^|\\W)download($|\\W)/ are no longer allowed']
+  })
+
+  t.deepEqual(validate('forbid-download-everywhere'), {
+    validForNewPackages: false,
+    validForOldPackages: true,
+    warnings: ['names matching /(^|\\W)download($|\\W)/ are no longer allowed']
+  })
+
+  t.deepEqual(validate('forbid-download'), {
+    validForNewPackages: false,
+    validForOldPackages: true,
+    warnings: ['names matching /(^|\\W)download($|\\W)/ are no longer allowed']
+  })
+
+  t.deepEqual(validate('node-downloader-helper'), {
+    validForNewPackages: true,
+    validForOldPackages: true
   })
 
   // Node/IO Core
