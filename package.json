@@ -3,6 +3,7 @@
   "version": "3.0.0",
   "description": "Give me a string and I'll tell you if it's a valid npm package name",
   "main": "index.js",
+  "types": "index.d.ts",
   "directories": {
     "test": "test"
   },
