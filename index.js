@@ -38,6 +38,10 @@ var validate = module.exports = function (name) {
     errors.push('name cannot start with an underscore')
   }
 
+  if (name.length && !name.match(/^[A-z0-9]/)) {
+    warnings.push('name cannot start with a special character')
+  }
+
   if (name.trim() !== name) {
     errors.push('name cannot contain leading or trailing spaces')
   }
@@ -65,8 +69,8 @@ var validate = module.exports = function (name) {
   }
 
   // mIxeD CaSe nAMEs
-  if (name.toLowerCase() !== name) {
-    warnings.push('name can no longer contain capital letters')
+  if (name.substring(1).toLowerCase() !== name.substring(1)) {
+    warnings.push('name can no longer contain capital letters from 2nd character onwards')
   }
 
   if (/[~'!()*]/.test(name.split('/').slice(-1)[0])) {

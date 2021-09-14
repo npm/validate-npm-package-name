@@ -23,7 +23,8 @@ input and returns an object with two properties:
 Below is a list of rules that valid `npm` package name should conform to.
 
 - package name length should be greater than zero
-- all the characters in the package name must be lowercase i.e., no uppercase or mixed case names are allowed
+- package name should not be start from a special character.
+- package name should not have any uppercase letter from 2nd character onwards.
 - package name *can* consist of hyphens
 - package name must *not* contain any non-url-safe characters (since name ends up being part of a URL)
 - package name should not start with `.` or `_`
