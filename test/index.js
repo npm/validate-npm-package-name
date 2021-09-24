@@ -22,30 +22,19 @@ test('validate-npm-package-name', function (t) {
   t.deepEqual(validate('@npm/thingy'), {
     validForNewPackages: false,
     validForOldPackages: true,
-    warnings: ['name cannot start with a special character']
+    warnings: ['name cannot start with a special/capital character']
   })
 
   t.deepEqual(validate('@npm-zors/money!time.js'), {
     validForNewPackages: false,
     validForOldPackages: true,
-    warnings: ['name cannot start with a special character',
+    warnings: ['name cannot start with a special/capital character',
       'name can no longer contain special characters ("~\'!()*")']
-  })
-
-  t.deepEqual(validate('Start-with-uppercase'), {
-    validForNewPackages: true,
-    validForOldPackages: true
   })
 
   t.deepEqual(validate('1start-with-digit'), {
     validForNewPackages: true,
     validForOldPackages: true
-  })
-
-  t.deepEqual(validate('Start-with-uppercase-and-Insert-uppercase-in-middle'), {
-    validForNewPackages: false,
-    validForOldPackages: true,
-    warnings: ['name can no longer contain capital letters from 2nd character onwards']
   })
 
   // Invalid
@@ -59,12 +48,13 @@ test('validate-npm-package-name', function (t) {
     validForNewPackages: false,
     validForOldPackages: false,
     errors: ['name cannot start with a period'],
-    warnings: ['name cannot start with a special character']})
+    warnings: ['name cannot start with a special/capital character']})
 
   t.deepEqual(validate('_start-with-underscore'), {
     validForNewPackages: false,
     validForOldPackages: false,
-    errors: ['name cannot start with an underscore']})
+    errors: ['name cannot start with an underscore'],
+    warnings: ['name cannot start with a special/capital character']})
 
   t.deepEqual(validate('contain:colons'), {
     validForNewPackages: false,
@@ -75,7 +65,7 @@ test('validate-npm-package-name', function (t) {
     validForNewPackages: false,
     validForOldPackages: false,
     errors: ['name cannot contain leading or trailing spaces', 'name can only contain URL-friendly characters'],
-    warnings: ['name cannot start with a special character']})
+    warnings: ['name cannot start with a special/capital character']})
 
   t.deepEqual(validate('trailing-space '), {
     validForNewPackages: false,
@@ -122,7 +112,7 @@ test('validate-npm-package-name', function (t) {
   t.deepEqual(validate('CAPITAL-LETTERS'), {
     validForNewPackages: false,
     validForOldPackages: true,
-    warnings: ['name can no longer contain capital letters from 2nd character onwards']})
+    warnings: ['name cannot start with a special/capital character', 'name can no longer contain capital letters']})
 
   t.end()
 })
