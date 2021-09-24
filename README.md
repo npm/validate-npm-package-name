@@ -24,10 +24,9 @@ Below is a list of rules that valid `npm` package name should conform to.
 
 - package name length should be greater than zero
 - package name should not be start from a special character.
-- package name should not have any uppercase letter from 2nd character onwards.
+- package name should not have any uppercase letter.
 - package name *can* consist of hyphens
 - package name must *not* contain any non-url-safe characters (since name ends up being part of a URL)
-- package name should not start with `.` or `_`
 - package name should *not* contain any leading or trailing spaces
 - package name should *not* contain any of the following characters: `~)('!*`
 - package name *cannot* be the same as a node.js/io.js core module nor a reserved/blacklisted name. For example, the following names are invalid:
