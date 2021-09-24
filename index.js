@@ -39,7 +39,7 @@ var validate = module.exports = function (name) {
   }
 
   if (name.length && !name.match(/^[a-z0-9]/)) {
-    warnings.push('name cannot start with a special/capital character')
+    warnings.push('name cannot start with a special or uppercase character')
   }
 
   if (name.trim() !== name) {
