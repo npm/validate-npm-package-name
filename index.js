@@ -38,8 +38,8 @@ var validate = module.exports = function (name) {
     errors.push('name cannot start with an underscore')
   }
 
-  if (name.length && !name.match(/^[a-z0-9]/)) {
-    warnings.push('name cannot start with a special or uppercase character')
+  if (name.length && !name.match(/^[a-z0-9@]/)) {
+    warnings.push('name can only start with lowercase character and digit')
   }
 
   if (name.trim() !== name) {

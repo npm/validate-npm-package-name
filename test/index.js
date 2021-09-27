@@ -20,16 +20,14 @@ test('validate-npm-package-name', function (t) {
   // Scoped (npm 2+)
 
   t.deepEqual(validate('@npm/thingy'), {
-    validForNewPackages: false,
+    validForNewPackages: true,
     validForOldPackages: true,
-    warnings: ['name cannot start with a special or uppercase character']
   })
 
   t.deepEqual(validate('@npm-zors/money!time.js'), {
     validForNewPackages: false,
     validForOldPackages: true,
-    warnings: ['name cannot start with a special or uppercase character',
-      'name can no longer contain special characters ("~\'!()*")']
+    warnings: ['name can no longer contain special characters ("~\'!()*")']
   })
 
   t.deepEqual(validate('1start-with-digit'), {
@@ -48,13 +46,13 @@ test('validate-npm-package-name', function (t) {
     validForNewPackages: false,
     validForOldPackages: false,
     errors: ['name cannot start with a period'],
-    warnings: ['name cannot start with a special or uppercase character']})
+    warnings: ['name can only start with lowercase character and digit']})
 
   t.deepEqual(validate('_start-with-underscore'), {
     validForNewPackages: false,
     validForOldPackages: false,
     errors: ['name cannot start with an underscore'],
-    warnings: ['name cannot start with a special or uppercase character']})
+    warnings: ['name can only start with lowercase character and digit']})
 
   t.deepEqual(validate('contain:colons'), {
     validForNewPackages: false,
@@ -65,7 +63,7 @@ test('validate-npm-package-name', function (t) {
     validForNewPackages: false,
     validForOldPackages: false,
     errors: ['name cannot contain leading or trailing spaces', 'name can only contain URL-friendly characters'],
-    warnings: ['name cannot start with a special or uppercase character']})
+    warnings: ['name can only start with lowercase character and digit']})
 
   t.deepEqual(validate('trailing-space '), {
     validForNewPackages: false,
@@ -112,7 +110,7 @@ test('validate-npm-package-name', function (t) {
   t.deepEqual(validate('CAPITAL-LETTERS'), {
     validForNewPackages: false,
     validForOldPackages: true,
-    warnings: ['name cannot start with a special or uppercase character', 'name can no longer contain capital letters']})
+    warnings: ['name can only start with lowercase character and digit', 'name can no longer contain capital letters']})
 
   t.end()
 })
