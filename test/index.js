@@ -52,7 +52,14 @@ test('validate-npm-package-name', function (t) {
     validForNewPackages: false,
     validForOldPackages: false,
     errors: ['name cannot start with an underscore'],
-    warnings: ['name can only start with lowercase character and digit']})
+    warnings: ['name can only start with lowercase character and digit']
+  })
+  
+  t.deepEqual(validate('@start-with-at-the-rate'), {
+    validForNewPackages: false,
+    validForOldPackages: false,
+    errors: ['name can only contain URL-friendly characters'],
+  })
 
   t.deepEqual(validate('contain:colons'), {
     validForNewPackages: false,
