@@ -1,3 +1,14 @@
+# 4.0.0
+
+## Breaking Changes
+
+- Package name should start with lowercase character or a digit. (https://github.com/npm/validate-npm-package-name/pull/33)
+
+## Docs
+
+- Changed the naming rules in README (https://github.com/npm/validate-npm-package-name/pull/33)
+
+
 # 3.0.0
 
 ## Breaking Changes
