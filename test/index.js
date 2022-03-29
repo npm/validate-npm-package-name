@@ -87,6 +87,11 @@ test('validate-npm-package-name', function (t) {
     validForOldPackages: true,
     warnings: ['http is a core module name'] })
 
+  t.deepEqual(validate('process'), {
+    validForNewPackages: false,
+    validForOldPackages: true,
+    warnings: ['process is a core module name'] })
+
   // Long Package Names
 
   /* eslint-disable-next-line max-len */
