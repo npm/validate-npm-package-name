@@ -1,4 +1,6 @@
-# 3.0.0
+# Changelog
+
+## 3.0.0
 
 ## Breaking Changes
 
