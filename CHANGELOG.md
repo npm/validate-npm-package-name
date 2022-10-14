@@ -1,5 +1,15 @@
 # Changelog
 
+## [5.0.0](https://github.com/npm/validate-npm-package-name/compare/v4.0.0...v5.0.0) (2022-10-10)
+
+### ⚠️ BREAKING CHANGES
+
+* `validate-npm-package-name` is now compatible with the following semver range for node: `^14.17.0 || ^16.13.0 || >=18.0.0`
+
+### Features
+
+* [`f0983ef`](https://github.com/npm/validate-npm-package-name/commit/f0983ef00924709c6c8bb86dd8d1765da154b2b2) [#50](https://github.com/npm/validate-npm-package-name/pull/50) postinstall for dependabot template-oss PR (@lukekarrys)
+
 ## [4.0.0](https://github.com/npm/validate-npm-package-name/compare/v3.0.0...v4.0.0) (2022-03-29)
 
 
