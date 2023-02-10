@@ -28,10 +28,20 @@ test('validate-npm-package-name', function (t) {
 
   // Invalid
 
-  t.same(validate(''), {
+  t.same(validate(null), {
     validForNewPackages: false,
     validForOldPackages: false,
-    errors: ['name length must be greater than zero'] })
+    errors: ['name cannot be null'] })
+
+  t.same(validate(undefined), {
+    validForNewPackages: false,
+    validForOldPackages: false,
+    errors: ['name cannot be undefined'] })
+
+  t.same(validate(42), {
+    validForNewPackages: false,
+    validForOldPackages: false,
+    errors: ['name must be a string'] })
 
   t.same(validate(''), {
     validForNewPackages: false,
