@@ -54,9 +54,6 @@
     "version": "4.11.4"
   },
   "tap": {
-    "statements": 88,
-    "branches": 92,
-    "lines": 88,
     "nyc-arg": [
       "--exclude",
       "tap-snapshots/**"
