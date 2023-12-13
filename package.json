@@ -6,9 +6,6 @@
   "directories": {
     "test": "test"
   },
-  "dependencies": {
-    "builtins": "^5.0.0"
-  },
   "devDependencies": {
     "@npmcli/eslint-config": "^4.0.0",
     "@npmcli/template-oss": "4.21.3",
