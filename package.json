@@ -1,6 +1,6 @@
 {
   "name": "validate-npm-package-name",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "Give me a string and I'll tell you if it's a valid npm package name",
   "main": "lib/",
   "directories": {
