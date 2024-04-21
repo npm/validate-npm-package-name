@@ -1,5 +1,19 @@
 # Changelog
 
+## [5.0.1](https://github.com/npm/validate-npm-package-name/compare/v5.0.0...v5.0.1) (2024-04-21)
+
+### Dependencies
+
+* [`f12f849`](https://github.com/npm/validate-npm-package-name/commit/f12f84980f51916585e86917f11af7416f6241f1) [#104](https://github.com/npm/validate-npm-package-name/pull/104) replace `builtins` dependency with Node.js `module.builtinModules` (#104)
+
+### Chores
+
+* [`bcc451a`](https://github.com/npm/validate-npm-package-name/commit/bcc451a4e42e5001ea80bd27769cedf1485de8cf) [#69](https://github.com/npm/validate-npm-package-name/pull/69) update tap coverage in package.json (#69) (@wraithgar)
+* [`320e5dd`](https://github.com/npm/validate-npm-package-name/commit/320e5ddfc6e2fcb92390cb6cf8da09038c045b2e) [#68](https://github.com/npm/validate-npm-package-name/pull/68) add new tests to reach full test coverage (#68) (@janbritz)
+* [`5c72411`](https://github.com/npm/validate-npm-package-name/commit/5c7241144e118dfa4fbf00169d7a664f09543a71) [#59](https://github.com/npm/validate-npm-package-name/pull/59) bump @npmcli/eslint-config from 3.1.0 to 4.0.0 (@dependabot[bot])
+* [`4c0afbf`](https://github.com/npm/validate-npm-package-name/commit/4c0afbfeed5d62dad7cf7f936e55c4ec26bf3bc5) [#109](https://github.com/npm/validate-npm-package-name/pull/109) postinstall for dependabot template-oss PR (@lukekarrys)
+* [`13f9b85`](https://github.com/npm/validate-npm-package-name/commit/13f9b853d8d13bbc1ae2ddec07a55eca5acea503) [#109](https://github.com/npm/validate-npm-package-name/pull/109) bump @npmcli/template-oss from 4.21.3 to 4.21.4 (@dependabot[bot])
+
 ## [5.0.0](https://github.com/npm/validate-npm-package-name/compare/v4.0.0...v5.0.0) (2022-10-10)
 
 ### ⚠️ BREAKING CHANGES
