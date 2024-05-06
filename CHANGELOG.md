@@ -1,5 +1,21 @@
 # Changelog
 
+## [5.0.1](https://github.com/npm/validate-npm-package-name/compare/v5.0.0...v5.0.1) (2024-05-06)
+
+### Dependencies
+
+* [`f12f849`](https://github.com/npm/validate-npm-package-name/commit/f12f84980f51916585e86917f11af7416f6241f1) [#104](https://github.com/npm/validate-npm-package-name/pull/104) replace `builtins` dependency with Node.js `module.builtinModules` (#104)
+
+### Chores
+
+* [`f2b3233`](https://github.com/npm/validate-npm-package-name/commit/f2b3233b206b11cab27deead59460d579739d136) [#112](https://github.com/npm/validate-npm-package-name/pull/112) auto publish (#112) (@lukekarrys)
+* [`406b31a`](https://github.com/npm/validate-npm-package-name/commit/406b31afe4b9da4e5c705d4a74abb31ed15fa8c4) [#110](https://github.com/npm/validate-npm-package-name/pull/110) bump @npmcli/template-oss to 4.22.0 (@lukekarrys)
+* [`bcc451a`](https://github.com/npm/validate-npm-package-name/commit/bcc451a4e42e5001ea80bd27769cedf1485de8cf) [#69](https://github.com/npm/validate-npm-package-name/pull/69) update tap coverage in package.json (#69) (@wraithgar)
+* [`320e5dd`](https://github.com/npm/validate-npm-package-name/commit/320e5ddfc6e2fcb92390cb6cf8da09038c045b2e) [#68](https://github.com/npm/validate-npm-package-name/pull/68) add new tests to reach full test coverage (#68) (@janbritz)
+* [`5c72411`](https://github.com/npm/validate-npm-package-name/commit/5c7241144e118dfa4fbf00169d7a664f09543a71) [#59](https://github.com/npm/validate-npm-package-name/pull/59) bump @npmcli/eslint-config from 3.1.0 to 4.0.0 (@dependabot[bot])
+* [`a893e39`](https://github.com/npm/validate-npm-package-name/commit/a893e39da69c0b7ad281d9b83fc553e82f8a8ff2) [#110](https://github.com/npm/validate-npm-package-name/pull/110) postinstall for dependabot template-oss PR (@lukekarrys)
+* [`13f9b85`](https://github.com/npm/validate-npm-package-name/commit/13f9b853d8d13bbc1ae2ddec07a55eca5acea503) [#109](https://github.com/npm/validate-npm-package-name/pull/109) bump @npmcli/template-oss from 4.21.3 to 4.21.4 (@dependabot[bot])
+
 ## [5.0.0](https://github.com/npm/validate-npm-package-name/compare/v4.0.0...v5.0.0) (2022-10-10)
 
 ### ⚠️ BREAKING CHANGES
