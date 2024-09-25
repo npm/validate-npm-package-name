@@ -1,5 +1,16 @@
 # Changelog
 
+## [6.0.0](https://github.com/npm/validate-npm-package-name/compare/v5.0.1...v6.0.0) (2024-09-24)
+### ⚠️ BREAKING CHANGES
+* `validate-npm-package-name` now supports node `^18.17.0 || >=20.5.0`
+### Bug Fixes
+* [`d14349c`](https://github.com/npm/validate-npm-package-name/commit/d14349c40aa07be3ebbf840106e613af81d3cb4a) [#131](https://github.com/npm/validate-npm-package-name/pull/131) align to npm 10 node engine range (@hashtagchris)
+### Chores
+* [`e78d90d`](https://github.com/npm/validate-npm-package-name/commit/e78d90dac8857000b3e7997091bc8946a820b4a4) [#131](https://github.com/npm/validate-npm-package-name/pull/131) run template-oss-apply (@hashtagchris)
+* [`3b308e9`](https://github.com/npm/validate-npm-package-name/commit/3b308e9f6a0c14c59bc5eacbc369206d2e351395) [#128](https://github.com/npm/validate-npm-package-name/pull/128) bump @npmcli/eslint-config from 4.0.5 to 5.0.0 (@dependabot[bot])
+* [`5f444c8`](https://github.com/npm/validate-npm-package-name/commit/5f444c828af6d2b2bf38b4efd04e95f712b062da) [#129](https://github.com/npm/validate-npm-package-name/pull/129) postinstall for dependabot template-oss PR (@hashtagchris)
+* [`a75975a`](https://github.com/npm/validate-npm-package-name/commit/a75975a1f4ee75b1eba65740bcb163a4beed8986) [#129](https://github.com/npm/validate-npm-package-name/pull/129) bump @npmcli/template-oss from 4.23.1 to 4.23.3 (@dependabot[bot])
+
 ## [5.0.1](https://github.com/npm/validate-npm-package-name/compare/v5.0.0...v5.0.1) (2024-05-06)
 
 ### Dependencies
