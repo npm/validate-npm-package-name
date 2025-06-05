@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.0.1](https://github.com/npm/validate-npm-package-name/compare/v6.0.0...v6.0.1) (2025-06-05)
+### Bug Fixes
+* [`68a5c0e`](https://github.com/npm/validate-npm-package-name/commit/68a5c0e9776544fc888f93a7deef5a817272ef66) [#136](https://github.com/npm/validate-npm-package-name/pull/136) adding validation for scoped packages that begin with one or more periods (@shmam)
+### Chores
+* [`99ced75`](https://github.com/npm/validate-npm-package-name/commit/99ced7599aa0f7c315055c1a943075d5460c24d5) [#136](https://github.com/npm/validate-npm-package-name/pull/136) template-oss fixes (@shmam)
+* [`c45bc37`](https://github.com/npm/validate-npm-package-name/commit/c45bc3709039088c7f97e89816452d3f04f68023) [#134](https://github.com/npm/validate-npm-package-name/pull/134) bump @npmcli/template-oss from 4.23.3 to 4.24.3 (#134) (@dependabot[bot], @npm-cli-bot)
+
 ## [6.0.0](https://github.com/npm/validate-npm-package-name/compare/v5.0.1...v6.0.0) (2024-09-24)
 ### ⚠️ BREAKING CHANGES
 * `validate-npm-package-name` now supports node `^18.17.0 || >=20.5.0`
