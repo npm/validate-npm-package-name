@@ -53,6 +53,21 @@ test('validate-npm-package-name', function (t) {
     validForOldPackages: false,
     errors: ['name cannot start with a period'] })
 
+  t.same(validate('@npm/.'), {
+    validForNewPackages: false,
+    validForOldPackages: false,
+    errors: ['name cannot start with a period'] })
+
+  t.same(validate('@npm/..'), {
+    validForNewPackages: false,
+    validForOldPackages: false,
+    errors: ['name cannot start with a period'] })
+
+  t.same(validate('@npm/.package'), {
+    validForNewPackages: false,
+    validForOldPackages: false,
+    errors: ['name cannot start with a period'] })
+
   t.same(validate('_start-with-underscore'), {
     validForNewPackages: false,
     validForOldPackages: false,
