@@ -189,7 +189,7 @@ test("validate-npm-package-name", function (t) {
     validForNewPackages: false,
     validForOldPackages: true,
     warnings: [
-      "name can no longer contain capital letters. Try: capital-letterss",
+      "name can no longer contain capital letters. Try: capital-letters",
     ],
   });
 
