@@ -29,7 +29,7 @@ Below is a list of rules that valid `npm` package name should conform to.
 - package name should not start with `.` or `_`
 - package name should *not* contain any spaces
 - package name should *not* contain any of the following characters: `~)('!*`
-- package name *cannot* be the same as a node.js/io.js core module nor a reserved/blacklisted name. For example, the following names are invalid:
+- package name *cannot* be the same as a node.js/io.js core module nor a reserved/excluded name. For example, the following names are invalid:
     + http
     + stream
     + node_modules

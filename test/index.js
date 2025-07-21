@@ -26,6 +26,23 @@ test('validate-npm-package-name', function (t) {
     warnings: ['name can no longer contain special characters ("~\'!()*")'],
   })
 
+  // Scoped package validation - only period start is checked, everything else is allowed
+
+  t.same(validate('@user/node_modules'), {
+    validForNewPackages: true,
+    validForOldPackages: true,
+  })
+
+  t.same(validate('@user/_package'), {
+    validForNewPackages: true,
+    validForOldPackages: true,
+  })
+
+  t.same(validate('@user/http'), {
+    validForNewPackages: true,
+    validForOldPackages: true,
+  })
+
   // Invalid
 
   t.same(validate(null), {
@@ -98,12 +115,12 @@ test('validate-npm-package-name', function (t) {
   t.same(validate('node_modules'), {
     validForNewPackages: false,
     validForOldPackages: false,
-    errors: ['node_modules is a blacklisted name'] })
+    errors: ['node_modules is not a valid package name'] })
 
   t.same(validate('favicon.ico'), {
     validForNewPackages: false,
     validForOldPackages: false,
-    errors: ['favicon.ico is a blacklisted name'] })
+    errors: ['favicon.ico is not a valid package name'] })
 
   // Node/IO Core
 
