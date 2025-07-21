@@ -1,5 +1,11 @@
 # Changelog
 
+## [6.0.2](https://github.com/npm/validate-npm-package-name/compare/v6.0.1...v6.0.2) (2025-07-21)
+### Bug Fixes
+* [`186f541`](https://github.com/npm/validate-npm-package-name/commit/186f541ab415da4c0fb4b4c7b9cd41e98e828d94) [#142](https://github.com/npm/validate-npm-package-name/pull/142) scoped names validate exclusionlist/underscore/core module (#142) (@owlstronaut)
+### Chores
+* [`8123f73`](https://github.com/npm/validate-npm-package-name/commit/8123f73c17529e488c37c56706c501330d55d513) [#140](https://github.com/npm/validate-npm-package-name/pull/140) bump @npmcli/template-oss from 4.24.4 to 4.25.0 (#140) (@dependabot[bot], @owlstronaut)
+
 ## [6.0.1](https://github.com/npm/validate-npm-package-name/compare/v6.0.0...v6.0.1) (2025-06-05)
 ### Bug Fixes
 * [`68a5c0e`](https://github.com/npm/validate-npm-package-name/commit/68a5c0e9776544fc888f93a7deef5a817272ef66) [#136](https://github.com/npm/validate-npm-package-name/pull/136) adding validation for scoped packages that begin with one or more periods (@shmam)
