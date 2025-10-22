@@ -1,5 +1,13 @@
 # Changelog
 
+## [7.0.0](https://github.com/npm/validate-npm-package-name/compare/v6.0.2...v7.0.0) (2025-10-22)
+### ⚠️ BREAKING CHANGES
+* align to npm 11 node engine range (#147)
+### Bug Fixes
+* [`69e0cbb`](https://github.com/npm/validate-npm-package-name/commit/69e0cbbd779e91194e918571ed7a5cd45571fa1b) [#147](https://github.com/npm/validate-npm-package-name/pull/147) align to npm 11 node engine range (#147) (@owlstronaut)
+### Chores
+* [`c6866b9`](https://github.com/npm/validate-npm-package-name/commit/c6866b9d968c224bc554184e2c87cdb32e3fb904) [#146](https://github.com/npm/validate-npm-package-name/pull/146) bump @npmcli/template-oss from 4.26.0 to 4.27.1 (#146) (@dependabot[bot], @npm-cli-bot)
+
 ## [6.0.2](https://github.com/npm/validate-npm-package-name/compare/v6.0.1...v6.0.2) (2025-07-21)
 ### Bug Fixes
 * [`186f541`](https://github.com/npm/validate-npm-package-name/commit/186f541ab415da4c0fb4b4c7b9cd41e98e828d94) [#142](https://github.com/npm/validate-npm-package-name/pull/142) scoped names validate exclusionlist/underscore/core module (#142) (@owlstronaut)
