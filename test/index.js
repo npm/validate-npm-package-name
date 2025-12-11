@@ -1,17 +1,18 @@
 'use strict'
 
-var validate = require('..')
-var test = require('tap').test
+const { test } = require('node:test')
+const assert = require('node:assert')
+const validate = require('..')
 
-test('validate-npm-package-name', function (t) {
+test('validate-npm-package-name', function () {
   // Traditional
 
-  t.same(validate('some-package'), { validForNewPackages: true, validForOldPackages: true })
-  t.same(validate('example.com'), { validForNewPackages: true, validForOldPackages: true })
-  t.same(validate('under_score'), { validForNewPackages: true, validForOldPackages: true })
-  t.same(validate('period.js'), { validForNewPackages: true, validForOldPackages: true })
-  t.same(validate('123numeric'), { validForNewPackages: true, validForOldPackages: true })
-  t.same(validate('crazy!'), {
+  assert.deepStrictEqual(validate('some-package'), { validForNewPackages: true, validForOldPackages: true })
+  assert.deepStrictEqual(validate('example.com'), { validForNewPackages: true, validForOldPackages: true })
+  assert.deepStrictEqual(validate('under_score'), { validForNewPackages: true, validForOldPackages: true })
+  assert.deepStrictEqual(validate('period.js'), { validForNewPackages: true, validForOldPackages: true })
+  assert.deepStrictEqual(validate('123numeric'), { validForNewPackages: true, validForOldPackages: true })
+  assert.deepStrictEqual(validate('crazy!'), {
     validForNewPackages: false,
     validForOldPackages: true,
     warnings: ['name can no longer contain special characters ("~\'!()*")'],
@@ -19,8 +20,8 @@ test('validate-npm-package-name', function (t) {
 
   // Scoped (npm 2+)
 
-  t.same(validate('@npm/thingy'), { validForNewPackages: true, validForOldPackages: true })
-  t.same(validate('@npm-zors/money!time.js'), {
+  assert.deepStrictEqual(validate('@npm/thingy'), { validForNewPackages: true, validForOldPackages: true })
+  assert.deepStrictEqual(validate('@npm-zors/money!time.js'), {
     validForNewPackages: false,
     validForOldPackages: true,
     warnings: ['name can no longer contain special characters ("~\'!()*")'],
@@ -28,108 +29,108 @@ test('validate-npm-package-name', function (t) {
 
   // Scoped package validation - only period start is checked, everything else is allowed
 
-  t.same(validate('@user/node_modules'), {
+  assert.deepStrictEqual(validate('@user/node_modules'), {
     validForNewPackages: true,
     validForOldPackages: true,
   })
 
-  t.same(validate('@user/_package'), {
+  assert.deepStrictEqual(validate('@user/_package'), {
     validForNewPackages: true,
     validForOldPackages: true,
   })
 
-  t.same(validate('@user/http'), {
+  assert.deepStrictEqual(validate('@user/http'), {
     validForNewPackages: true,
     validForOldPackages: true,
   })
 
   // Invalid
 
-  t.same(validate(null), {
+  assert.deepStrictEqual(validate(null), {
     validForNewPackages: false,
     validForOldPackages: false,
     errors: ['name cannot be null'] })
 
-  t.same(validate(undefined), {
+  assert.deepStrictEqual(validate(undefined), {
     validForNewPackages: false,
     validForOldPackages: false,
     errors: ['name cannot be undefined'] })
 
-  t.same(validate(42), {
+  assert.deepStrictEqual(validate(42), {
     validForNewPackages: false,
     validForOldPackages: false,
     errors: ['name must be a string'] })
 
-  t.same(validate(''), {
+  assert.deepStrictEqual(validate(''), {
     validForNewPackages: false,
     validForOldPackages: false,
     errors: ['name length must be greater than zero'] })
 
-  t.same(validate('.start-with-period'), {
+  assert.deepStrictEqual(validate('.start-with-period'), {
     validForNewPackages: false,
     validForOldPackages: false,
     errors: ['name cannot start with a period'] })
 
-  t.same(validate('@npm/.'), {
+  assert.deepStrictEqual(validate('@npm/.'), {
     validForNewPackages: false,
     validForOldPackages: false,
     errors: ['name cannot start with a period'] })
 
-  t.same(validate('@npm/..'), {
+  assert.deepStrictEqual(validate('@npm/..'), {
     validForNewPackages: false,
     validForOldPackages: false,
     errors: ['name cannot start with a period'] })
 
-  t.same(validate('@npm/.package'), {
+  assert.deepStrictEqual(validate('@npm/.package'), {
     validForNewPackages: false,
     validForOldPackages: false,
     errors: ['name cannot start with a period'] })
 
-  t.same(validate('_start-with-underscore'), {
+  assert.deepStrictEqual(validate('_start-with-underscore'), {
     validForNewPackages: false,
     validForOldPackages: false,
     errors: ['name cannot start with an underscore'] })
 
-  t.same(validate('contain:colons'), {
+  assert.deepStrictEqual(validate('contain:colons'), {
     validForNewPackages: false,
     validForOldPackages: false,
     errors: ['name can only contain URL-friendly characters'] })
 
-  t.same(validate(' leading-space'), {
+  assert.deepStrictEqual(validate(' leading-space'), {
     validForNewPackages: false,
     validForOldPackages: false,
     /* eslint-disable-next-line max-len */
     errors: ['name cannot contain leading or trailing spaces', 'name can only contain URL-friendly characters'] })
 
-  t.same(validate('trailing-space '), {
+  assert.deepStrictEqual(validate('trailing-space '), {
     validForNewPackages: false,
     validForOldPackages: false,
     /* eslint-disable-next-line max-len */
     errors: ['name cannot contain leading or trailing spaces', 'name can only contain URL-friendly characters'] })
 
-  t.same(validate('s/l/a/s/h/e/s'), {
+  assert.deepStrictEqual(validate('s/l/a/s/h/e/s'), {
     validForNewPackages: false,
     validForOldPackages: false,
     errors: ['name can only contain URL-friendly characters'] })
 
-  t.same(validate('node_modules'), {
+  assert.deepStrictEqual(validate('node_modules'), {
     validForNewPackages: false,
     validForOldPackages: false,
     errors: ['node_modules is not a valid package name'] })
 
-  t.same(validate('favicon.ico'), {
+  assert.deepStrictEqual(validate('favicon.ico'), {
     validForNewPackages: false,
     validForOldPackages: false,
     errors: ['favicon.ico is not a valid package name'] })
 
   // Node/IO Core
 
-  t.same(validate('http'), {
+  assert.deepStrictEqual(validate('http'), {
     validForNewPackages: false,
     validForOldPackages: true,
     warnings: ['http is a core module name'] })
 
-  t.deepEqual(validate('process'), {
+  assert.deepStrictEqual(validate('process'), {
     validForNewPackages: false,
     validForOldPackages: true,
     warnings: ['process is a core module name'] })
@@ -137,24 +138,22 @@ test('validate-npm-package-name', function (t) {
   // Long Package Names
 
   /* eslint-disable-next-line max-len */
-  t.same(validate('ifyouwanttogetthesumoftwonumberswherethosetwonumbersarechosenbyfindingthelargestoftwooutofthreenumbersandsquaringthemwhichismultiplyingthembyitselfthenyoushouldinputthreenumbersintothisfunctionanditwilldothatforyou-'), {
+  assert.deepStrictEqual(validate('ifyouwanttogetthesumoftwonumberswherethosetwonumbersarechosenbyfindingthelargestoftwooutofthreenumbersandsquaringthemwhichismultiplyingthembyitselfthenyoushouldinputthreenumbersintothisfunctionanditwilldothatforyou-'), {
     validForNewPackages: false,
     validForOldPackages: true,
     warnings: ['name can no longer contain more than 214 characters'],
   })
 
   /* eslint-disable-next-line max-len */
-  t.same(validate('ifyouwanttogetthesumoftwonumberswherethosetwonumbersarechosenbyfindingthelargestoftwooutofthreenumbersandsquaringthemwhichismultiplyingthembyitselfthenyoushouldinputthreenumbersintothisfunctionanditwilldothatforyou'), {
+  assert.deepStrictEqual(validate('ifyouwanttogetthesumoftwonumberswherethosetwonumbersarechosenbyfindingthelargestoftwooutofthreenumbersandsquaringthemwhichismultiplyingthembyitselfthenyoushouldinputthreenumbersintothisfunctionanditwilldothatforyou'), {
     validForNewPackages: true,
     validForOldPackages: true,
   })
 
   // Legacy Mixed-Case
 
-  t.same(validate('CAPITAL-LETTERS'), {
+  assert.deepStrictEqual(validate('CAPITAL-LETTERS'), {
     validForNewPackages: false,
     validForOldPackages: true,
     warnings: ['name can no longer contain capital letters'] })
-
-  t.end()
 })
