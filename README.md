@@ -42,7 +42,7 @@ Below is a list of rules that valid `npm` package name should conform to.
 ### Valid Names
 
 ```js
-var validate = require("validate-npm-package-name")
+const validate = require("validate-npm-package-name")
 
 validate("some-package")
 validate("example.com")
