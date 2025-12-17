@@ -34,6 +34,11 @@ test('validate-npm-package-name', function () {
     validForOldPackages: true,
   })
 
+  assert.deepStrictEqual(validate('@user/-package'), {
+    validForNewPackages: true,
+    validForOldPackages: true,
+  })
+
   assert.deepStrictEqual(validate('@user/_package'), {
     validForNewPackages: true,
     validForOldPackages: true,
@@ -90,6 +95,16 @@ test('validate-npm-package-name', function () {
     validForNewPackages: false,
     validForOldPackages: false,
     errors: ['name cannot start with an underscore'] })
+
+  assert.deepStrictEqual(validate('-start-with-hyphen'), {
+    validForNewPackages: false,
+    validForOldPackages: false,
+    errors: ['name cannot start with a hyphen'] })
+
+  assert.deepStrictEqual(validate('--start-with-double-hyphen'), {
+    validForNewPackages: false,
+    validForOldPackages: false,
+    errors: ['name cannot start with a hyphen'] })
 
   assert.deepStrictEqual(validate('contain:colons'), {
     validForNewPackages: false,
