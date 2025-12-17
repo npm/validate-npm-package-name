@@ -7,6 +7,7 @@ const validate = require('..')
 test('validate-npm-package-name', function () {
   // Traditional
 
+  assert.deepStrictEqual(validate('validate-npm-package-name'), { validForNewPackages: true, validForOldPackages: true })
   assert.deepStrictEqual(validate('some-package'), { validForNewPackages: true, validForOldPackages: true })
   assert.deepStrictEqual(validate('example.com'), { validForNewPackages: true, validForOldPackages: true })
   assert.deepStrictEqual(validate('under_score'), { validForNewPackages: true, validForOldPackages: true })
