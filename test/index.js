@@ -7,6 +7,7 @@ const validate = require('..')
 test('validate-npm-package-name', function () {
   // Traditional
 
+  assert.deepStrictEqual(validate('validate-npm-package-name'), { validForNewPackages: true, validForOldPackages: true })
   assert.deepStrictEqual(validate('some-package'), { validForNewPackages: true, validForOldPackages: true })
   assert.deepStrictEqual(validate('example.com'), { validForNewPackages: true, validForOldPackages: true })
   assert.deepStrictEqual(validate('under_score'), { validForNewPackages: true, validForOldPackages: true })
@@ -30,6 +31,11 @@ test('validate-npm-package-name', function () {
   // Scoped package validation - only period start is checked, everything else is allowed
 
   assert.deepStrictEqual(validate('@user/node_modules'), {
+    validForNewPackages: true,
+    validForOldPackages: true,
+  })
+
+  assert.deepStrictEqual(validate('@user/-package'), {
     validForNewPackages: true,
     validForOldPackages: true,
   })
@@ -90,6 +96,16 @@ test('validate-npm-package-name', function () {
     validForNewPackages: false,
     validForOldPackages: false,
     errors: ['name cannot start with an underscore'] })
+
+  assert.deepStrictEqual(validate('-start-with-hyphen'), {
+    validForNewPackages: false,
+    validForOldPackages: false,
+    errors: ['name cannot start with a hyphen'] })
+
+  assert.deepStrictEqual(validate('--start-with-double-hyphen'), {
+    validForNewPackages: false,
+    validForOldPackages: false,
+    errors: ['name cannot start with a hyphen'] })
 
   assert.deepStrictEqual(validate('contain:colons'), {
     validForNewPackages: false,
