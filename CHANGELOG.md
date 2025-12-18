@@ -1,5 +1,16 @@
 # Changelog
 
+## [7.0.1](https://github.com/npm/validate-npm-package-name/compare/v7.0.0...v7.0.1) (2025-12-18)
+### Bug Fixes
+* [`23f220d`](https://github.com/npm/validate-npm-package-name/commit/23f220dad912024af5f3a48501f8f1bfbf8fa311) [#156](https://github.com/npm/validate-npm-package-name/pull/156) reject leading hyphens (#156) (@hashtagchris)
+### Documentation
+* [`52ff0f1`](https://github.com/npm/validate-npm-package-name/commit/52ff0f181afeb60126ec0e623991130dd94785e2) [#154](https://github.com/npm/validate-npm-package-name/pull/154) use const instead of var (#154) (@hashtagchris)
+### Chores
+* [`cfb27ae`](https://github.com/npm/validate-npm-package-name/commit/cfb27aec1cfb94a199fd38db1a1785b8fb7fc96b) [#153](https://github.com/npm/validate-npm-package-name/pull/153) remove tap (@owlstronaut)
+* [`2358aa2`](https://github.com/npm/validate-npm-package-name/commit/2358aa27e2514f82eb14a243d05ae85651fb5a94) [#153](https://github.com/npm/validate-npm-package-name/pull/153) swap from tap to built-in node:test (@owlstronaut)
+* [`fc8e3f5`](https://github.com/npm/validate-npm-package-name/commit/fc8e3f50841cb8ab488a00b967633edf085f7361) [#149](https://github.com/npm/validate-npm-package-name/pull/149) bump @npmcli/eslint-config from 5.1.0 to 6.0.0 (#149) (@dependabot[bot])
+* [`23a9e2c`](https://github.com/npm/validate-npm-package-name/commit/23a9e2cba69fe548d9dcadc17ea770b23d67a439) [#152](https://github.com/npm/validate-npm-package-name/pull/152) bump @npmcli/template-oss from 4.28.0 to 4.28.1 (#152) (@dependabot[bot], @npm-cli-bot)
+
 ## [7.0.0](https://github.com/npm/validate-npm-package-name/compare/v6.0.2...v7.0.0) (2025-10-22)
 ### ⚠️ BREAKING CHANGES
 * align to npm 11 node engine range (#147)
