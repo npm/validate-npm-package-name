@@ -172,7 +172,6 @@ test('validate-npm-package-name', function () {
     validForNewPackages: false,
     validForOldPackages: true,
     warnings: ['name can no longer contain capital letters'] })
-
 })
 /*
 * This test will start failing if a newer version of node is used that adds new builtins.
@@ -186,7 +185,7 @@ test('node builtins', function () {
       assert.deepStrictEqual(validate(builtin), {
         validForNewPackages: false,
         validForOldPackages: true,
-        warnings: [`${builtin} is a core module name`]
+        warnings: [`${builtin} is a core module name`],
       })
     }
   }
