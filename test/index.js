@@ -173,3 +173,15 @@ test('validate-npm-package-name', function () {
     validForOldPackages: true,
     warnings: ['name can no longer contain capital letters'] })
 })
+
+/*
+ * This is a compromise to get builtin checking to work across platforms, even differing node versions.
+ * The fixture should be built against the same version of node that is being checked for in this test.
+ * When a newer version of node is added to our test matrix, both the fixture file and this node version check will need to be updated.
+ */
+if (process.versions.node.startsWith('24.')) {
+  // To update this test fixture run "npm run builtin-fixture"
+  const builtinsFixture = require('../lib/builtin-modules.json')
+  const { builtinModules: nodeBuiltins } = require('node:module')
+  assert.deepStrictEqual(builtinsFixture, nodeBuiltins)
+}

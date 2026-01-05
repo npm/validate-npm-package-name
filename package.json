@@ -11,6 +11,7 @@
     "@npmcli/template-oss": "4.28.1"
   },
   "scripts": {
+    "builtin-fixture": "node -e \"console.log(JSON.stringify(require('node:module').builtinModules))\" > ./lib/builtin-modules.json",
     "cov:test": "TAP_FLAGS='--cov' npm run test:code",
     "test:code": "tap ${TAP_FLAGS:-'--'} test/*.js",
     "test:style": "standard",
