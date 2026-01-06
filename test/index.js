@@ -173,3 +173,20 @@ test('validate-npm-package-name', function () {
     validForOldPackages: true,
     warnings: ['name can no longer contain capital letters'] })
 })
+/*
+* This test will start failing if a newer version of node is used that adds new builtins.
+* That means it's time to update the list of builtins that this package knows about by running "npm run builtin-fixture"
+*/
+test('node builtins', function () {
+  const { builtinModules: nodeBuiltins } = require('node:module')
+  for (const builtin of nodeBuiltins) {
+    // some builtins are already invalid from other rules
+    if (!builtin.startsWith('_') && !builtin.includes('/') && !builtin.includes(':')) {
+      assert.deepStrictEqual(validate(builtin), {
+        validForNewPackages: false,
+        validForOldPackages: true,
+        warnings: [`${builtin} is a core module name`],
+      })
+    }
+  }
+})
