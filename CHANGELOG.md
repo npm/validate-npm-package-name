@@ -1,5 +1,9 @@
 # Changelog
 
+## [7.0.2](https://github.com/npm/validate-npm-package-name/compare/v7.0.1...v7.0.2) (2026-01-06)
+### Bug Fixes
+* [`78cc913`](https://github.com/npm/validate-npm-package-name/commit/78cc913ea3b329c99240b8c24141ffcda31ed15b) [#157](https://github.com/npm/validate-npm-package-name/pull/157) builtins: move to generated node builtins fixture (#157) (@wraithgar)
+
 ## [7.0.1](https://github.com/npm/validate-npm-package-name/compare/v7.0.0...v7.0.1) (2025-12-18)
 ### Bug Fixes
 * [`23f220d`](https://github.com/npm/validate-npm-package-name/commit/23f220dad912024af5f3a48501f8f1bfbf8fa311) [#156](https://github.com/npm/validate-npm-package-name/pull/156) reject leading hyphens (#156) (@hashtagchris)
