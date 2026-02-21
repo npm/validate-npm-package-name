@@ -107,6 +107,17 @@ test('validate-npm-package-name', function () {
     validForOldPackages: false,
     errors: ['name cannot start with a hyphen'] })
 
+  // Grandfathered single-hyphen package "-" (published before the hyphen rule existed)
+  assert.deepStrictEqual(validate('-'), {
+    validForNewPackages: false,
+    validForOldPackages: true,
+    warnings: ['name cannot start with a hyphen'] })
+
+  assert.deepStrictEqual(validate('-foo'), {
+    validForNewPackages: false,
+    validForOldPackages: false,
+    errors: ['name cannot start with a hyphen'] })
+
   assert.deepStrictEqual(validate('contain:colons'), {
     validForNewPackages: false,
     validForOldPackages: false,
