@@ -32,7 +32,7 @@ jobs:
         shell: bash
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ inputs.ref }}
       - name: Setup Git User
@@ -48,7 +48,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           sha: ${{ inputs.check-sha }}
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         id: node
         with:
           node-version: 24.x
@@ -85,7 +85,7 @@ jobs:
             os: macos-latest
             shell: bash
           - name: macOS
-            os: macos-13
+            os: macos-15-intel
             shell: bash
           - name: Windows
             os: windows-latest
@@ -97,15 +97,15 @@ jobs:
           - 22.x
           - 24.x
         exclude:
-          - platform: { name: macOS, os: macos-13, shell: bash }
+          - platform: { name: macOS, os: macos-15-intel, shell: bash }
             node-version: 20.17.0
-          - platform: { name: macOS, os: macos-13, shell: bash }
+          - platform: { name: macOS, os: macos-15-intel, shell: bash }
             node-version: 20.x
-          - platform: { name: macOS, os: macos-13, shell: bash }
+          - platform: { name: macOS, os: macos-15-intel, shell: bash }
             node-version: 22.9.0
-          - platform: { name: macOS, os: macos-13, shell: bash }
+          - platform: { name: macOS, os: macos-15-intel, shell: bash }
             node-version: 22.x
-          - platform: { name: macOS, os: macos-13, shell: bash }
+          - platform: { name: macOS, os: macos-15-intel, shell: bash }
             node-version: 24.x
     runs-on: ${{ matrix.platform.os }}
     defaults:
@@ -113,7 +113,7 @@ jobs:
         shell: ${{ matrix.platform.shell }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ inputs.ref }}
       - name: Setup Git User
@@ -129,12 +129,13 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           sha: ${{ inputs.check-sha }}
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         id: node
         with:
           node-version: ${{ matrix.node-version }}
           check-latest: contains(matrix.node-version, '.x')
       - name: Install Latest npm
+        if: ${{ !startsWith(matrix.node-version, '22.') }}
         uses: ./.github/actions/install-latest-npm
         with:
           node: ${{ steps.node.outputs.node-version }}
@@ -143,11 +144,8 @@ jobs:
       - name: Test (with coverage on Node >= 24)
         if: ${{ startsWith(matrix.node-version, '24') }}
         run: npm run test:cover --ignore-scripts
-      - name: Test (on Node 20 with globbing workaround)
-        if: ${{ startsWith(matrix.node-version, '20') }}
-        run: npm run test:node20 --ignore-scripts
-      - name: Test
-        if: ${{ !startsWith(matrix.node-version, '24') && !startsWith(matrix.node-version, '20') }}
+      - name: Test (without coverage on Node < 24)
+        if: ${{ !startsWith(matrix.node-version, '24') }}
         run: npm test --ignore-scripts
       - name: Conclude Check
         uses: LouisBrunner/checks-action@v1.6.0
