@@ -1,5 +1,15 @@
 # Changelog
 
+## [8.0.0](https://github.com/npm/validate-npm-package-name/compare/v7.0.2...v8.0.0) (2026-05-08)
+### ⚠️ BREAKING CHANGES
+* `validate-npm-package-name` now supports node `^22.22.2 || ^24.15.0 || >=26.0.0`
+* template-oss-apply
+### Features
+* [`981eb29`](https://github.com/npm/validate-npm-package-name/commit/981eb29691c8e6b086b7c62d4295314dd9810c4d) [#162](https://github.com/npm/validate-npm-package-name/pull/162) bump to new node engine range (@owlstronaut)
+* [`8c6b24e`](https://github.com/npm/validate-npm-package-name/commit/8c6b24e03d370fbf75cabf6fc02a351a67b7805e) [#162](https://github.com/npm/validate-npm-package-name/pull/162) template-oss-apply (@owlstronaut)
+### Chores
+* [`9ba1f8b`](https://github.com/npm/validate-npm-package-name/commit/9ba1f8b96770db0eb3fcc2439d556d155a4f1087) [#162](https://github.com/npm/validate-npm-package-name/pull/162) template-oss-apply (@owlstronaut)
+
 ## [7.0.2](https://github.com/npm/validate-npm-package-name/compare/v7.0.1...v7.0.2) (2026-01-06)
 ### Bug Fixes
 * [`78cc913`](https://github.com/npm/validate-npm-package-name/commit/78cc913ea3b329c99240b8c24141ffcda31ed15b) [#157](https://github.com/npm/validate-npm-package-name/pull/157) builtins: move to generated node builtins fixture (#157) (@wraithgar)
