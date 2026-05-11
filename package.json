@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "@npmcli/eslint-config": "^6.0.0",
-    "@npmcli/template-oss": "5.0.0"
+    "@npmcli/template-oss": "5.1.0"
   },
   "scripts": {
     "builtin-fixture": "node -e \"console.log(JSON.stringify(require('node:module').builtinModules))\" > ./lib/builtin-modules.json",
