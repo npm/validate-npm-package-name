@@ -99,13 +99,13 @@ test('validate-npm-package-name', function () {
 
   assert.deepStrictEqual(validate('-start-with-hyphen'), {
     validForNewPackages: false,
-    validForOldPackages: false,
-    errors: ['name cannot start with a hyphen'] })
+    validForOldPackages: true,
+    warnings: ['name cannot start with a hyphen'] })
 
   assert.deepStrictEqual(validate('--start-with-double-hyphen'), {
     validForNewPackages: false,
-    validForOldPackages: false,
-    errors: ['name cannot start with a hyphen'] })
+    validForOldPackages: true,
+    warnings: ['name cannot start with a hyphen'] })
 
   assert.deepStrictEqual(validate('contain:colons'), {
     validForNewPackages: false,
