@@ -115,14 +115,12 @@ test('validate-npm-package-name', function () {
   assert.deepStrictEqual(validate(' leading-space'), {
     validForNewPackages: false,
     validForOldPackages: false,
-    /* eslint-disable-next-line max-len */
-    errors: ['name cannot contain leading or trailing spaces', 'name can only contain URL-friendly characters'] })
+    errors: ['name can only contain URL-friendly characters'] })
 
   assert.deepStrictEqual(validate('trailing-space '), {
     validForNewPackages: false,
     validForOldPackages: false,
-    /* eslint-disable-next-line max-len */
-    errors: ['name cannot contain leading or trailing spaces', 'name can only contain URL-friendly characters'] })
+    errors: ['name can only contain URL-friendly characters'] })
 
   assert.deepStrictEqual(validate('s/l/a/s/h/e/s'), {
     validForNewPackages: false,
