@@ -190,3 +190,13 @@ test('node builtins', function () {
     }
   }
 })
+
+test('rejects lone UTF-16 surrogates without throwing', function () {
+  for (const name of ['bad\uD800name', 'bad\uDC00name', '@scope/bad\uD800name', '@bad\uDC00scope/name']) {
+    assert.deepStrictEqual(validate(name), {
+      validForNewPackages: false,
+      validForOldPackages: false,
+      errors: ['name can only contain URL-friendly characters'],
+    })
+  }
+})
