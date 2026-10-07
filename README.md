@@ -26,7 +26,7 @@ Below is a list of rules that valid `npm` package name should conform to.
 - all the characters in the package name must be lowercase i.e., no uppercase or mixed case names are allowed
 - package name *can* consist of hyphens
 - package name must *not* contain any non-url-safe characters (since name ends up being part of a URL)
-- package name should not start with `.` or `_`
+- package name should not start with `.`, `_`, or `-`
 - package name should *not* contain any spaces
 - package name should *not* contain any of the following characters: `~)('!*`
 - package name *cannot* be the same as a node.js/io.js core module nor a reserved/excluded name. For example, the following names are invalid:
@@ -64,11 +64,10 @@ All of the above names are valid, so you'll get this object back:
 ### Invalid Names
 
 ```js
-validate("excited!")
 validate(" leading-space:and:weirdchars")
 ```
 
-That was never a valid package name, so you get this:
+This was never a valid package name, so you get this:
 
 ```js
 {
@@ -102,8 +101,26 @@ returns:
   validForNewPackages: false,
   validForOldPackages: true,
   warnings: [
-    "name can no longer contain capital letters",
-    "name can no longer contain more than 214 characters"
+    "name can no longer contain more than 214 characters",
+    "name can no longer contain capital letters"
+  ]
+}
+```
+
+Some special characters are also valid for old packages:
+
+```js
+validate("excited!")
+```
+
+returns:
+
+```js
+{
+  validForNewPackages: false,
+  validForOldPackages: true,
+  warnings: [
+    "name can no longer contain special characters (\"~'!()*\")"
   ]
 }
 ```
