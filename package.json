@@ -3,6 +3,9 @@
   "version": "8.0.0",
   "description": "Give me a string and I'll tell you if it's a valid npm package name",
   "main": "lib/",
+  "bin": {
+    "validate-npm-package-name": "bin/validate-npm-package-name.js"
+  },
   "directories": {
     "test": "test"
   },
