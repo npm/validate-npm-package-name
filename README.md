@@ -15,6 +15,7 @@ input and returns an object with two properties:
     + [Valid Names](#valid-names)
     + [Invalid Names](#invalid-names)
 - [Legacy Names](#legacy-names)
+- [CLI](#cli)
 - [Tests](#tests)
 - [License](#license)
 
@@ -107,6 +108,24 @@ returns:
   ]
 }
 ```
+
+## CLI
+
+Install globally with `npm install --global validate-npm-package-name`, then pass
+exactly one package name:
+
+```sh
+validate-npm-package-name "some-package"
+validate-npm-package-name "@npm/thingy"
+```
+
+The command exits with status `0` and no output when the name is valid for a new
+package. Invalid names, including names valid only for old packages, exit with
+status `1` and print the validator's warnings and errors unchanged to stderr,
+one per line. Nothing is written to stdout.
+
+Missing or multiple arguments print usage to stderr and exit with status `1`.
+There are no command-line options; validation always uses `validForNewPackages`.
 
 ## Tests
 
